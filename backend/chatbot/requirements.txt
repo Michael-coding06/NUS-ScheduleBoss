@@ -1,3 +1,8 @@
 flask
 flask-cors
-gunicorn
+python-dotenv
+google-generativeai
+pydantic
+pydantic-ai
+plyer
+pydantic-core
