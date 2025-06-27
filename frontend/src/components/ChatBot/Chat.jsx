@@ -29,7 +29,7 @@ const Chat = ({
         setLoading(true)
         setMessages(prev => [...prev, { sender: 'bot', text: '.' }]);
 
-        const response = await fetch('https://chatbot-server-75cu.onrender.com/data',{
+        const response = await fetch('https://chatbot-server-6gnn.onrender.com/data',{
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
