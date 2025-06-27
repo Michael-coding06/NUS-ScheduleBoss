@@ -1,16 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import LoginSignup from './components/LoginSignup/LoginSignup';
 import Timetable from './components//TimeTable/Timetable'
 import { useEffect, useState } from 'react';
 import Login from './components/LoginSignup/Login';
 import Signup from './components/LoginSignup/Signup';
-
-
-import Axios from "axios";
-
 function App() {
   const [token, setToken] = useState(false);
 
