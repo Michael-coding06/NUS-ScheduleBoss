@@ -1,0 +1,218 @@
+[
+  {
+    "parts": [
+      {
+        "content": "You are a helpful, friendly and concise scheduling assistant.\nWhen the user's message includes a valid module code (e.g., CS1010E) and seems to be asking about its timetable, call the find_mod_time tool.\nWhen the user wants to add a module or task to the timetable, use the add_span tool with the appropriate details.\nFor the add_span tool, always use the following abbreviations for the day parameter: 'Mon', 'Tue', 'Wed', 'Thu', 'Fri' (not full names like 'Monday')\nand 10:00 or 15:00 for the start and end parameters.\n\n==== CALENDAR AVAILABILITY AND MEETING SCHEDULING ====\nWhen a user asks to find a time for them to meet with someone (e.g \"when can Khoa and Minh meet tomorow?\", \"when should Khoa and Minh play table tennis on Tuesday?\") follow this workflow:\n1. Identify the names of the people involved in the meeting (e.g., Khoa and Minh).\n2. Use the find_email tool to get their email addresses.\n3. Use the find_free_time tool to find mutual available time slots between both of them.\n4. If there are available time slots, suggest them to the user.\n",
+        "timestamp": "2025-06-25T08:38:06.636678Z",
+        "dynamic_ref": null,
+        "part_kind": "system-prompt"
+      },
+      {
+        "content": "When can Khoa and Minh meet on Mon?",
+        "timestamp": "2025-06-25T08:38:06.636678Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "find_email",
+        "args": {
+          "name": "Khoa"
+        },
+        "tool_call_id": "pyd_ai_076f50b114d549029323580406c7ed0c",
+        "part_kind": "tool-call"
+      },
+      {
+        "tool_name": "find_email",
+        "args": {
+          "name": "Minh"
+        },
+        "tool_call_id": "pyd_ai_2874f4d20d1944f493ed1a45cff30b9b",
+        "part_kind": "tool-call"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 539,
+      "response_tokens": 11,
+      "total_tokens": 550,
+      "details": {
+        "text_candidates_tokens": 11,
+        "text_prompt_tokens": 539
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-06-25T08:38:08.136654Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "find_email",
+        "content": [
+          "vietkhoaktk@gmail.com"
+        ],
+        "tool_call_id": "pyd_ai_076f50b114d549029323580406c7ed0c",
+        "timestamp": "2025-06-25T08:38:08.138664Z",
+        "part_kind": "tool-return"
+      },
+      {
+        "tool_name": "find_email",
+        "content": [
+          "nguyenminhhoangnmh123@gmail.com"
+        ],
+        "tool_call_id": "pyd_ai_2874f4d20d1944f493ed1a45cff30b9b",
+        "timestamp": "2025-06-25T08:38:08.138664Z",
+        "part_kind": "tool-return"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "find_free_time",
+        "args": {
+          "email": "vietkhoaktk@gmail.com",
+          "day": "Mon"
+        },
+        "tool_call_id": "pyd_ai_144559db029d4888ab141b14b8836a03",
+        "part_kind": "tool-call"
+      },
+      {
+        "tool_name": "find_free_time",
+        "args": {
+          "email": "nguyenminhhoangnmh123@gmail.com",
+          "day": "Mon"
+        },
+        "tool_call_id": "pyd_ai_08b1836449474bd2832fc87530bb0366",
+        "part_kind": "tool-call"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 584,
+      "response_tokens": 38,
+      "total_tokens": 622,
+      "details": {
+        "text_candidates_tokens": 38,
+        "text_prompt_tokens": 584
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-06-25T08:38:09.071030Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "find_free_time",
+        "content": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          18,
+          19
+        ],
+        "tool_call_id": "pyd_ai_144559db029d4888ab141b14b8836a03",
+        "timestamp": "2025-06-25T08:38:09.073041Z",
+        "part_kind": "tool-return"
+      },
+      {
+        "tool_name": "find_free_time",
+        "content": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          18,
+          19
+        ],
+        "tool_call_id": "pyd_ai_08b1836449474bd2832fc87530bb0366",
+        "timestamp": "2025-06-25T08:38:09.074338Z",
+        "part_kind": "tool-return"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "Khoa and Minh are both available on Monday from 11:00 to 15:00 and from 18:00 to 19:00.\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 654,
+      "response_tokens": 40,
+      "total_tokens": 694,
+      "details": {
+        "text_candidates_tokens": 40,
+        "text_prompt_tokens": 654
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-06-25T08:38:10.086689Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "Hi",
+        "timestamp": "2025-06-27T04:03:53.357164Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "Hi there! How can I help you today?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 695,
+      "response_tokens": 11,
+      "total_tokens": 706,
+      "details": {
+        "text_candidates_tokens": 11,
+        "text_prompt_tokens": 695
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-06-27T04:03:54.873468Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  }
+]

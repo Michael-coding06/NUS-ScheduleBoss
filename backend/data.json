@@ -1,0 +1,18 @@
+[
+  {
+    "sender": "user",
+    "text": "When can Khoa and Minh meet on Mon?"
+  },
+  {
+    "sender": "bot",
+    "text": "Khoa and Minh are both available on Monday from 11:00 to 15:00 and from 18:00 to 19:00.\n"
+  },
+  {
+    "sender": "user",
+    "text": "Hi"
+  },
+  {
+    "sender": "bot",
+    "text": "Hi there! How can I help you today?\n"
+  }
+]

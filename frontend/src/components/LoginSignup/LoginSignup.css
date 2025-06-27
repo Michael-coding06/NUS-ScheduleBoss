@@ -1,0 +1,78 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    background-color: rgba(35, 25, 50, 0.7);
+    width: 500px;
+    height: 700px;
+    align-items: center;
+    position: relative;
+    margin:auto;
+    margin-top: 75px;
+    border-radius: 40px;
+}
+
+.header{
+    margin-top: 60px;   
+    margin-bottom: 70px; 
+}
+.bottom-text{
+    color: #F8A531;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.text{
+    font-size: 40px;
+    color: #F8A531;
+}
+
+.input{
+    margin-left: 35px;
+    margin-bottom:50px;
+    display:flex;
+    width: 80%;
+    height: 40px;
+    background-color: #eaeaea;
+    border-radius: 10px;
+}
+
+.input img{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.input input{
+    outline:none;
+    color: rgba(100, 80, 130);;
+    background:transparent;
+    border:none;
+    padding-right: 50px;
+}
+
+.forgot-password{
+    color:#f37335;
+    font-weight: 500;
+}
+
+
+.submit{
+    font-size: 20px;
+    background-color:#879c89 ;
+    color: white;
+    height: 60px;
+    width: 125px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+
+.submit:hover{
+    color:#f37335;
+}
+
+.gray{
+    background-color: rgba(35, 25, 50, 0.8);
+}

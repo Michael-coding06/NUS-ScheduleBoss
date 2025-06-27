@@ -1,0 +1,66 @@
+[
+  {
+    "sender": "user",
+    "text": "available time slots for CS1010E"
+  },
+  {
+    "sender": "bot",
+    "text": "The available time slots for CS1010E are:\nMon: 10:00-12:00, 14:00-16:00, 16:00-18:00\nTue: 10:00-12:00, 14:00-16:00, 16:00-18:00\nWed: 08:00-10:00, 10:00-12:00, 12:00-14:00, 14:00-16:00, 16:00-18:00\nThu: 10:00-12:00, 12:00-14:00, 14:00-16:00, 16:00-18:00\nFri: 10:00-12:00, 12:00-14:00, 14:00-16:00, 16:00-18:00"
+  },
+  {
+    "sender": "user",
+    "text": "add a task named Chores on Sat from 11 to 13 for me"
+  },
+  {
+    "sender": "bot",
+    "text": "OK. I've added Chores to your calendar on Sat from 11:00 to 13:00.\n"
+  },
+  {
+    "sender": "user",
+    "text": "hi"
+  },
+  {
+    "sender": "bot",
+    "text": "Hi! How can I help you today?\n"
+  },
+  {
+    "sender": "user",
+    "text": "I want to check the time for my module GEA1000"
+  },
+  {
+    "sender": "bot",
+    "text": "OK. GEA1000 has multiple time slots: Mon, Tue, Wed, Thu, Fri from 09:00 to 12:00, Mon, Tue, Wed, Thu, Fri from 12:00 to 15:00, Mon, Tue, Wed, Thu, Fri from 15:00 to 18:00, Tue, Wed from 19:00 to 22:00\n"
+  },
+  {
+    "sender": "user",
+    "text": "How about CS1010E"
+  },
+  {
+    "sender": "bot",
+    "text": "OK. I found the following times for CS1010E:\nMon 10:00-12:00\nMon 14:00-16:00\nMon 16:00-18:00\nTue 10:00-12:00\nTue 14:00-16:00\nTue 16:00-18:00\nWed 08:00-10:00\nWed 10:00-12:00\nWed 12:00-14:00\nWed 14:00-16:00\nWed 16:00-18:00\nThu 10:00-12:00\nThu 12:00-14:00\nThu 14:00-16:00\nThu 16:00-18:00\nFri 10:00-12:00\nFri 12:00-14:00\nFri 14:00-16:00\nFri 16:00-18:00"
+  },
+  {
+    "sender": "user",
+    "text": "Add that module for me, on Fri from 14 to 16"
+  },
+  {
+    "sender": "bot",
+    "text": "Please provide the module code."
+  },
+  {
+    "sender": "user",
+    "text": "CS1010E"
+  },
+  {
+    "sender": "bot",
+    "text": "OK. Here is the timetable for CS1010E:\nMon: 10:00-12:00, 14:00-16:00, 16:00-18:00\nTue: 10:00-12:00, 14:00-16:00, 16:00-18:00\nWed: 08:00-10:00, 10:00-12:00, 12:00-14:00, 14:00-16:00, 16:00-18:00\nThu: 10:00-12:00, 12:00-14:00, 14:00-16:00, 16:00-18:00\nFri: 10:00-12:00, 12:00-14:00, 14:00-16:00, 16:00-18:00\n"
+  },
+  {
+    "sender": "user",
+    "text": "add the module CS1010E to my timetable with the time slot on Fri from 14 to 16"
+  },
+  {
+    "sender": "bot",
+    "text": "OK. I've added CS1010E to your calendar on Fri from 14:00 to 16:00.\n"
+  }
+]
