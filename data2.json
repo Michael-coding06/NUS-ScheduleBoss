@@ -1,0 +1,172 @@
+[
+  {
+    "parts": [
+      {
+        "content": "You are a helpful, friendly and concise scheduling assistant.\nWhen the user's message includes a valid module code (e.g., CS1010E) and seems to be asking about its timetable, call the find_mod_time tool.\nWhen the user wants to add a module or task to the timetable, use the add_span tool with the appropriate details.\nFor the add_span tool, always use the following abbreviations for the day parameter: 'Mon', 'Tue', 'Wed', 'Thu', 'Fri' (not full names like 'Monday')\nand 10:00 or 15:00 for the start and end parameters.\n\n==== CALENDAR AVAILABILITY AND MEETING SCHEDULING ====\nWhen a user asks to find a time for them to meet with someone (e.g \"when can Khoa and Minh meet tomorow?\", \"when should Khoa and Minh play table tennis on Tuesday?\") follow this workflow:\n1. Identify the names of the people involved in the meeting (e.g., Khoa and Minh).\n2. Use the find_email tool to get their email addresses.\n3. Use the find_free_time tool to find mutual available time slots between both of them.\n4. If there are available time slots, suggest them to the user.\n",
+        "timestamp": "2025-06-26T16:36:17.337778Z",
+        "dynamic_ref": null,
+        "part_kind": "system-prompt"
+      },
+      {
+        "content": "add a task named Chores on Sat from 11 to 13 for me",
+        "timestamp": "2025-06-26T16:36:17.337778Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "add_span",
+        "args": {
+          "start": "11:00",
+          "type": "task",
+          "end": "13:00",
+          "name": "Chores",
+          "day": "Sat"
+        },
+        "tool_call_id": "pyd_ai_53c27a63c42a4da485f71954c2950329",
+        "part_kind": "tool-call"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 547,
+      "response_tokens": 22,
+      "total_tokens": 569,
+      "details": {
+        "text_candidates_tokens": 22,
+        "text_prompt_tokens": 547
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-06-26T16:36:20.070230Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "add_span",
+        "content": null,
+        "tool_call_id": "pyd_ai_53c27a63c42a4da485f71954c2950329",
+        "timestamp": "2025-06-26T16:36:20.073247Z",
+        "part_kind": "tool-return"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "OK. I've added Chores to your calendar on Sat from 11:00 to 13:00.\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 576,
+      "response_tokens": 29,
+      "total_tokens": 605,
+      "details": {
+        "text_candidates_tokens": 29,
+        "text_prompt_tokens": 576
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-06-26T16:36:21.116138Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "add the module CS1010E to my timetable with the time slot on Fri from 14 to 16",
+        "timestamp": "2025-06-27T04:07:00.012603Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "add_span",
+        "args": {
+          "name": "CS1010E",
+          "day": "Fri",
+          "type": "module",
+          "end": "16:00",
+          "start": "14:00"
+        },
+        "tool_call_id": "pyd_ai_c71c7c03c4a34bcb83fcce46daecccdd",
+        "part_kind": "tool-call"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 631,
+      "response_tokens": 26,
+      "total_tokens": 657,
+      "details": {
+        "text_candidates_tokens": 26,
+        "text_prompt_tokens": 631
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-06-27T04:07:01.392367Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "add_span",
+        "content": null,
+        "tool_call_id": "pyd_ai_c71c7c03c4a34bcb83fcce46daecccdd",
+        "timestamp": "2025-06-27T04:07:01.392367Z",
+        "part_kind": "tool-return"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "OK. I've added CS1010E to your calendar on Fri from 14:00 to 16:00.\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 664,
+      "response_tokens": 33,
+      "total_tokens": 697,
+      "details": {
+        "text_candidates_tokens": 33,
+        "text_prompt_tokens": 664
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-06-27T04:07:02.625363Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  }
+]
