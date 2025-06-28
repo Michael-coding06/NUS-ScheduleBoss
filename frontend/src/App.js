@@ -5,7 +5,10 @@ import { useEffect, useState } from 'react';
 import Login from './components/LoginSignup/Login';
 import Signup from './components/LoginSignup/Signup';
 function App() {
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState(() => {
+    const stored = sessionStorage.getItem('token');
+    return stored ? JSON.parse(stored) : null;
+  });
 
   
   if(token){
