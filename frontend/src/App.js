@@ -1,5 +1,5 @@
 import './App.css';
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Timetable from './components//TimeTable/Timetable'
 import { useEffect, useState } from 'react';
 import Login from './components/LoginSignup/Login';
@@ -25,12 +25,10 @@ function App() {
   return (
     <Router basename='/NUS-ScheduleBoss'>
       <Routes>
-        <Route path="/" >
-          <Route path="timetable" element={<Timetable token = {token}/>} />        
-          <Route path="login" element={<Login setToken ={setToken} />} />
-          <Route path="signup" element={<Signup/>} />
-          <Route index element={<Signup/>}/>
-        </Route>
+        <Route path="/timetable" element={<Timetable token={token}/>} />        
+        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/signup" element={<Signup/>} />
+        <Route path="/" element={<Signup/>}/>
       </Routes>
     </Router>
   );
