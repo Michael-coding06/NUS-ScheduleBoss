@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Timetable from './components//TimeTable/Timetable'
 import { useEffect, useState } from 'react';
 import Login from './components/LoginSignup/Login';
@@ -23,14 +23,16 @@ function App() {
   }, [])
 
   return (
-    <Router basename='/NUS-ScheduleBoss'>
-      <Routes>
-        <Route path="/timetable" element={<Timetable token={token}/>} />        
-        <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/signup" element={<Signup/>} />
-        <Route path="/" element={<Signup/>}/>
-      </Routes>
-    </Router>
+      // <Router basename='/NUS-ScheduleBoss'>
+      <Router>
+        <Routes>
+          <Route path="/timetable" element={<Timetable token={token}/>} />        
+          <Route path="/login" element={<Login setToken={setToken} />} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/" element={<Signup/>}/>
+           <Route path="*" element={<Navigate to= "/"/>}/>
+        </Routes>
+      </Router>
   );
 }
 
