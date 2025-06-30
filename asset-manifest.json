@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/NUS-ScheduleBoss/static/css/main.22768a02.css",
-    "main.js": "/NUS-ScheduleBoss/static/js/main.515dd105.js",
-    "static/js/952.c64f3381.chunk.js": "/NUS-ScheduleBoss/static/js/952.c64f3381.chunk.js",
-    "static/js/453.9b944272.chunk.js": "/NUS-ScheduleBoss/static/js/453.9b944272.chunk.js",
-    "static/media/background-img.png": "/NUS-ScheduleBoss/static/media/background-img.7e621ca56a4e5219c6b6.png",
-    "index.html": "/NUS-ScheduleBoss/index.html",
-    "main.22768a02.css.map": "/NUS-ScheduleBoss/static/css/main.22768a02.css.map",
-    "main.515dd105.js.map": "/NUS-ScheduleBoss/static/js/main.515dd105.js.map",
-    "952.c64f3381.chunk.js.map": "/NUS-ScheduleBoss/static/js/952.c64f3381.chunk.js.map",
-    "453.9b944272.chunk.js.map": "/NUS-ScheduleBoss/static/js/453.9b944272.chunk.js.map"
+    "main.css": "/static/css/main.d87d0b7a.css",
+    "main.js": "/static/js/main.7f456c22.js",
+    "static/js/952.c64f3381.chunk.js": "/static/js/952.c64f3381.chunk.js",
+    "static/js/453.9b944272.chunk.js": "/static/js/453.9b944272.chunk.js",
+    "static/media/background-img.png": "/static/media/background-img.7e621ca56a4e5219c6b6.png",
+    "index.html": "/index.html",
+    "main.d87d0b7a.css.map": "/static/css/main.d87d0b7a.css.map",
+    "main.7f456c22.js.map": "/static/js/main.7f456c22.js.map",
+    "952.c64f3381.chunk.js.map": "/static/js/952.c64f3381.chunk.js.map",
+    "453.9b944272.chunk.js.map": "/static/js/453.9b944272.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.22768a02.css",
-    "static/js/main.515dd105.js"
+    "static/css/main.d87d0b7a.css",
+    "static/js/main.7f456c22.js"
   ]
 }
