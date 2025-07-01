@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/NUS-ScheduleBoss/static/css/main.0053b649.css",
-    "main.js": "/NUS-ScheduleBoss/static/js/main.190886ba.js",
+    "main.js": "/NUS-ScheduleBoss/static/js/main.19704f36.js",
     "static/js/952.c64f3381.chunk.js": "/NUS-ScheduleBoss/static/js/952.c64f3381.chunk.js",
     "static/js/453.9b944272.chunk.js": "/NUS-ScheduleBoss/static/js/453.9b944272.chunk.js",
     "static/media/background-img.png": "/NUS-ScheduleBoss/static/media/background-img.7e621ca56a4e5219c6b6.png",
     "index.html": "/NUS-ScheduleBoss/index.html",
     "main.0053b649.css.map": "/NUS-ScheduleBoss/static/css/main.0053b649.css.map",
-    "main.190886ba.js.map": "/NUS-ScheduleBoss/static/js/main.190886ba.js.map",
+    "main.19704f36.js.map": "/NUS-ScheduleBoss/static/js/main.19704f36.js.map",
     "952.c64f3381.chunk.js.map": "/NUS-ScheduleBoss/static/js/952.c64f3381.chunk.js.map",
     "453.9b944272.chunk.js.map": "/NUS-ScheduleBoss/static/js/453.9b944272.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0053b649.css",
-    "static/js/main.190886ba.js"
+    "static/js/main.19704f36.js"
   ]
 }
