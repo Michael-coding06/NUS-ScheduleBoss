@@ -24,7 +24,7 @@ function App() {
 
   return (
       <Router basename='/NUS-ScheduleBoss'>
-      <Router>
+      // <Router>
         <Routes>
           <Route path="/timetable" element={<Timetable token={token}/>} />        
           <Route path="/login" element={<Login setToken={setToken} />} />
