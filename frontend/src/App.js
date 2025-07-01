@@ -23,7 +23,7 @@ function App() {
   }, [])
 
   return (
-      // <Router basename='/NUS-ScheduleBoss'>
+      <Router basename='/NUS-ScheduleBoss'>
       <Router>
         <Routes>
           <Route path="/timetable" element={<Timetable token={token}/>} />        
