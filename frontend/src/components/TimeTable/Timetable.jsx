@@ -86,7 +86,10 @@ const Timetable = ({token}) => {
     const response = await fetch(`${BACKEND_URL}/api/timetable_data`, { method: 'GET' });
     const data = await response.json();
     console.log('API Response:', data);  
-    const spans = data.receivedspans[userEmail];
+    let spans = data.receivedspans[userEmail];
+    if (!Array.isArray(spans)) {
+      spans = [];
+    }
     console.log(`User: ${userEmail}, Spans:`,  JSON.stringify(spans));
     setSelectedSpans(spans);
     setHighlightedSpans(spans);
