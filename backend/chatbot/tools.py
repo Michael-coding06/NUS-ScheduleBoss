@@ -4,7 +4,7 @@ type = {}
 day_order = {'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4}
 
 with open('../spans.json', 'r') as file:
-    data = json.load(file)
+        data = json.load(file)
 
 def find_mod_time(module: str) ->str:
     """
