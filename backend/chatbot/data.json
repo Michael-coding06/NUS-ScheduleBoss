@@ -62,5 +62,125 @@
   {
     "sender": "bot",
     "text": "OK. I've added CS1010E to your calendar on Fri from 14:00 to 16:00.\n"
+  },
+  {
+    "sender": "user",
+    "text": "find phuc's email"
+  },
+  {
+    "sender": "bot",
+    "text": "OK. I found Phuc's email address: phucththsg@gmail.com.\n"
+  },
+  {
+    "sender": "user",
+    "text": "find phuc's email"
+  },
+  {
+    "sender": "bot",
+    "text": "I already found Phuc's email address: phucththsg@gmail.com. Do you need anything else?\n"
+  },
+  {
+    "sender": "user",
+    "text": "find phuc's email for me"
+  },
+  {
+    "sender": "bot",
+    "text": "OK. I found Phuc's email address: phucththsg@gmail.com.\n"
+  },
+  {
+    "sender": "user",
+    "text": "hi"
+  },
+  {
+    "sender": "bot",
+    "text": "Hi, how can I help you today?\n"
+  },
+  {
+    "sender": "user",
+    "text": "hi"
+  },
+  {
+    "sender": "bot",
+    "text": "Hi! How can I help you today?\n"
+  },
+  {
+    "sender": "user",
+    "text": "find phuc's email"
+  },
+  {
+    "sender": "user",
+    "text": "find duy's email for me"
+  },
+  {
+    "sender": "bot",
+    "text": "I can't seem to find duy's email. Could you provide more information?\n"
+  },
+  {
+    "sender": "user",
+    "text": "find duong's email for em"
+  },
+  {
+    "sender": "bot",
+    "text": "I'm sorry, I couldn't find an email address for Duong.\n"
+  },
+  {
+    "sender": "user",
+    "text": "find duong's email for me"
+  },
+  {
+    "sender": "bot",
+    "text": "I couldn't find an email address for Duong. Could you provide more information or check the spelling?\n"
+  },
+  {
+    "sender": "user",
+    "text": "show me current users' emails"
+  },
+  {
+    "sender": "bot",
+    "text": "I am sorry, I cannot fulfill this request. The available tools do not allow me to display all users' emails. I can only find the email of a specific person if you provide their name.\n"
+  },
+  {
+    "sender": "user",
+    "text": "find phuc's email for me"
+  },
+  {
+    "sender": "bot",
+    "text": "OK. I found Phuc's email address: phucththsg@gmail.com.\n"
+  },
+  {
+    "sender": "user",
+    "text": "how about Khoa"
+  },
+  {
+    "sender": "bot",
+    "text": "OK. I found Khoa's email address: vietkhoaktk@gmail.com.\n"
+  },
+  {
+    "sender": "user",
+    "text": "and Minh?"
+  },
+  {
+    "sender": "user",
+    "text": "find phuc's email"
+  },
+  {
+    "sender": "bot",
+    "text": "I already found Phuc's email address: phucththsg@gmail.com. Do you need anything else?\n"
+  },
+  {
+    "sender": "user",
+    "text": "find phuc's email"
+  },
+  {
+    "sender": "bot",
+    "text": "I have already found Phuc's email, which is phucththsg@gmail.com. Is there anything else I can help you with?\n"
+  },
+  {
+    "sender": "user",
+    "text": "hi"
+  },
+  {
+    "sender": "bot",
+    "text": "Hi, how can I help?\n"
   }
 ]

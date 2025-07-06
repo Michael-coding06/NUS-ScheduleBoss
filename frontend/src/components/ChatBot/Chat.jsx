@@ -1,9 +1,6 @@
 import './Chat.css'
-// import logo1 from './logo1.png'
-// import logo2 from './logo2.png'
 import logo from './logo.png'
 import React, { useState, useEffect} from 'react'
-// import {Scrollbar} from 'react-scrollbars-custom';
 
 const Chat = ({
     setModules,
@@ -14,10 +11,7 @@ const Chat = ({
     setShowChat,
 }) => {
     const [message, setMessage] = useState('');
-    const [messages, setMessages] = useState([
-        {sender: 'bot', text: 'Hellow, how can I help you?'},
-        {sender: 'user', text: 'How large is the ocean?'}
-    ])
+    const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,6 +24,7 @@ const Chat = ({
         setMessages(prev => [...prev, { sender: 'bot', text: '.' }]);
 
         const response = await fetch('https://chatbot-server-6gnn.onrender.com/data',{
+        // const response = await fetch('http://localhost:3002/data', {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',

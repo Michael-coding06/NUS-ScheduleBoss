@@ -67,6 +67,7 @@ model = Agent(
 
 def bot_response(message, data_2 = ModelMessagesTypeAdapter.validate_python(data2)):
     tools.type.clear()
+    print(tools.data)
     data.append({'sender': 'user', 'text': message})
     ans = model.run_sync(message, message_history=data_2)
     data.append({'sender': 'bot', 'text': ans.output})
@@ -82,4 +83,3 @@ def bot_response(message, data_2 = ModelMessagesTypeAdapter.validate_python(data
         'type': tools.type,
         'response': ans.output,
     }
-

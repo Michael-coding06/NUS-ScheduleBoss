@@ -34,6 +34,7 @@ const Login = ({ setToken }) => {
 
       if (error) throw error;
       setToken(data);
+      sessionStorage.setItem('token', JSON.stringify(data));
       navigate('/timetable')
       return formData.email;
     } catch (error) {

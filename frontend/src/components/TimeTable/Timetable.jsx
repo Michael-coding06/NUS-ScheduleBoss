@@ -67,6 +67,7 @@ const Timetable = ({token}) => {
 
   let userEmail = token.user.user_metadata.email;
   const BACKEND_URL = 'https://backend-server-r1tg.onrender.com';
+  // const BACKEND_URL = 'http://localhost:3001'
   const handleSave = async () => {
     console.log(userEmail);
     const response = await fetch(`${BACKEND_URL}/api/timetable`, {
@@ -86,7 +87,11 @@ const Timetable = ({token}) => {
     const response = await fetch(`${BACKEND_URL}/api/timetable_data`, { method: 'GET' });
     const data = await response.json();
     console.log('API Response:', data);  
-    const spans = data.receivedspans[userEmail];
+  
+    let spans = data.receivedspans[userEmail];
+    if (!Array.isArray(spans)) {
+      spans = [];
+    }
     console.log(`User: ${userEmail}, Spans:`,  JSON.stringify(spans));
     setSelectedSpans(spans);
     setHighlightedSpans(spans);
@@ -158,7 +163,7 @@ const Timetable = ({token}) => {
                         className={
                             (isSelected ? 'selected' : '') +
                             (isHighlightable ? 'highlight' : '') +
-                            (isHighlightable && time === span?.start ? ' timeslot-start' : '')
+                            ((isHighlightable || isSelected) && time === span?.start ? ' timeslot-start' : '')
                         }
                       >
                         {isSelected && (
@@ -304,10 +309,10 @@ const Timetable = ({token}) => {
                           setHighlightedSpans={setHighlightedSpans}
                           setShowChat = {setShowChat}
                           showChat = {showChat}/>
-        <button className='chat-toggler' onClick={() => setShowChat(!showChat)}>
-          <img src={chat_icon} alt="" className='chat-img-2'/>
-        </button>
       </div>
+      <button className='chat-toggler' onClick={() => setShowChat(!showChat)}>
+          <img src={chat_icon} alt="" className='chat-img-2'/>
+      </button>
     </div>
   );
 };

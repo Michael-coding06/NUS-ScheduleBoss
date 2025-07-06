@@ -168,3 +168,12 @@
   33%  { content: '..'; }
   66%  { content: '...'; }
 }
+
+@media (max-width: 500px) {
+    .chat-pop-up {
+        width: 300px;
+    }
+    .chat-body{
+        height: 150px;
+    }
+}

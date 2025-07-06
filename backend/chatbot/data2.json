@@ -168,5 +168,281 @@
       "finish_reason": "STOP"
     },
     "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "find phuc's email",
+        "timestamp": "2025-07-02T08:31:54.493848Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "find_email",
+        "args": {
+          "name": "phuc"
+        },
+        "tool_call_id": "pyd_ai_3604f28316fa4da99dc02f96bb163b09",
+        "part_kind": "tool-call"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 703,
+      "response_tokens": 6,
+      "total_tokens": 709,
+      "details": {
+        "text_candidates_tokens": 6,
+        "text_prompt_tokens": 703
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-02T08:31:56.457208Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "find_email",
+        "content": [
+          "phucththsg@gmail.com"
+        ],
+        "tool_call_id": "pyd_ai_3604f28316fa4da99dc02f96bb163b09",
+        "timestamp": "2025-07-02T08:31:56.460241Z",
+        "part_kind": "tool-return"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "OK. I found Phuc's email address: phucththsg@gmail.com.\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 724,
+      "response_tokens": 22,
+      "total_tokens": 746,
+      "details": {
+        "text_candidates_tokens": 22,
+        "text_prompt_tokens": 724
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-02T08:31:57.438045Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "find phuc's email",
+        "timestamp": "2025-07-02T08:58:58.148364Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "find_email",
+        "args": {
+          "name": "phuc"
+        },
+        "tool_call_id": "pyd_ai_bcdefbf37a1e4d068c9445e1eb616706",
+        "part_kind": "tool-call"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 752,
+      "response_tokens": 6,
+      "total_tokens": 758,
+      "details": {
+        "text_candidates_tokens": 6,
+        "text_prompt_tokens": 752
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-02T08:58:59.111073Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "find_email",
+        "content": [
+          "phucththsg@gmail.com"
+        ],
+        "tool_call_id": "pyd_ai_bcdefbf37a1e4d068c9445e1eb616706",
+        "timestamp": "2025-07-02T08:58:59.112719Z",
+        "part_kind": "tool-return"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "I already found Phuc's email address: phucththsg@gmail.com. Do you need anything else?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 773,
+      "response_tokens": 27,
+      "total_tokens": 800,
+      "details": {
+        "text_candidates_tokens": 27,
+        "text_prompt_tokens": 773
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-02T08:58:59.930920Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "find phuc's email",
+        "timestamp": "2025-07-02T09:18:04.368058Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "find_email",
+        "args": {
+          "name": "phuc"
+        },
+        "tool_call_id": "pyd_ai_6ffd9e3a3c8241e4866dbc14c6f3cd6c",
+        "part_kind": "tool-call"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 806,
+      "response_tokens": 6,
+      "total_tokens": 812,
+      "details": {
+        "text_candidates_tokens": 6,
+        "text_prompt_tokens": 806
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-02T09:18:05.891963Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "tool_name": "find_email",
+        "content": [
+          "phucththsg@gmail.com"
+        ],
+        "tool_call_id": "pyd_ai_6ffd9e3a3c8241e4866dbc14c6f3cd6c",
+        "timestamp": "2025-07-02T09:18:06.004829Z",
+        "part_kind": "tool-return"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "I have already found Phuc's email, which is phucththsg@gmail.com. Is there anything else I can help you with?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 827,
+      "response_tokens": 33,
+      "total_tokens": 860,
+      "details": {
+        "text_candidates_tokens": 33,
+        "text_prompt_tokens": 827
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-02T09:18:07.061341Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "hi",
+        "timestamp": "2025-07-05T15:58:23.654548Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "Hi, how can I help?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 861,
+      "response_tokens": 8,
+      "total_tokens": 869,
+      "details": {
+        "text_candidates_tokens": 8,
+        "text_prompt_tokens": 861
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-05T15:58:26.223314Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
   }
 ]

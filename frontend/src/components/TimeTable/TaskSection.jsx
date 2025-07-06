@@ -65,7 +65,7 @@ const TasksSection = ({
         </div>
 
             {dropdownOpen_task && (
-              <div className="dropdown-menu">
+              <div className="dropdown-menu-task">
                 <div className="task-info">
                   <div className="task-info-item">
                     <div className="task-label">Name of your task:</div>
