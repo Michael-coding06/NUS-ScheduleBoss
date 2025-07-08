@@ -22,6 +22,7 @@ export default function useManagement() {
     const newSpans = highlightedSpans.filter(s => s.module !== modName);
     setHighlightedSpans([...newSpans, ...spans]);
   };
+  // may skip this one to follow the logic of the task card
 
   const handleTimeSlotSelect = (span) => {
     if (selectedSpans.some(s => s.module === span.name && s.day === span.day && s.start === span.start)) {
@@ -31,7 +32,8 @@ export default function useManagement() {
     }
     setHighlightedSpans([...selectedSpans, span]);
   };
-
+  //skip handletimeslotselect cuz dont see its effect
+  
   const isTimeInSpan = (day, time, span) => (
     span.day === day && time >= span.start && time < span.end
   );

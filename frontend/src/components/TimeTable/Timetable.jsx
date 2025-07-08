@@ -156,7 +156,7 @@ const Timetable = ({token}) => {
                         key={`${day}-${time}`}
                         onClick={() => {
                           if (isHighlightable) {
-                            handleTimeSlotSelect(span)
+                            // handleTimeSlotSelect(span)
                             setSelectedSpans([...selectedSpans, span]);
                           }
                         }}
