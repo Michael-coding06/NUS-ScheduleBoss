@@ -6,7 +6,10 @@ from Agent import bot_response
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, 
+     origins='*',
+     methods=['GET', 'POST', 'PUT', 'DELETE'],
+     allow_headers=['Content-Type', 'Authorization'])
 @app.route('/data', methods = ['POST'])
 def handle_data():
     message = request.get_json()
