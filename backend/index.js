@@ -70,7 +70,10 @@ app.post('/api/chatbot/:userEmail', async (req, res) => {
 });
 
 //send data to frontend
-app.get('/ping', () => res.send ('OK'));
+app.get('/ping', async(req, res) => {
+    console.log('OKE')
+    res.send('OKE')
+});
 app.get('/api/timetable_data/:userEmail', async(req, res) => {
     const {userEmail} = req.params;
     const data = await database.findOne({userEmail});
