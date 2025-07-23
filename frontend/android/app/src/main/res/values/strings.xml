@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">KhoaTyme</string>
-    <string name="title_activity_main">KhoaTyme</string>
-    <string name="package_name">com.khoa.tyme</string>
-    <string name="custom_url_scheme">com.khoa.tyme</string>
-</resources>
