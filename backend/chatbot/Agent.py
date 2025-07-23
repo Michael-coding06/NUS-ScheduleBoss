@@ -1,27 +1,13 @@
 import google.generativeai as genai
 from dotenv import load_dotenv
 from pydantic_ai import Agent, Tool
-from pydantic_core import to_jsonable_python
-from pydantic_ai.messages import ModelMessagesTypeAdapter
-load_dotenv()
+from pydantic_ai.messages import ModelMessage, ModelRequest
 import os
-import json
 import tools
-DATA_FILE = 'data.json'
-if os.path.exists(DATA_FILE):
-    with open(DATA_FILE, 'r') as file:
-        data = json.load(file)
-else:
-    data = []
+from pydantic_ai.models.openai import OpenAIModel
+from pydantic_ai.providers.openai import OpenAIProvider
 
-# testing
-DATA_FILE_2 = 'data2.json'
-if os.path.exists(DATA_FILE_2):
-    with open(DATA_FILE_2, 'r') as file:
-        data2 = json.load(file)
-else:
-    data2 = []
-
+load_dotenv()
 system_prompt = """\
 You are a helpful, friendly and concise scheduling assistant.
 When the user's message includes a valid module code (e.g., CS1010E) and seems to be asking about its timetable, call the find_mod_time tool.
@@ -37,49 +23,53 @@ When a user asks to find a time for them to meet with someone (e.g "when can Kho
 4. If there are available time slots, suggest them to the user.
 """
 
-    
+def filter_responses(messages: list[ModelMessage]) -> list[ModelMessage]:
+    return [msg for msg in messages if isinstance(msg, ModelRequest)]
+
+
+def summarize_old_messages(messages: list[ModelMessage]) -> list[ModelMessage]:
+    return messages[-20:]
+
 api_key = os.getenv("GEMINI_API_KEY")
-model = Agent(  
+# ollama_model = OpenAIModel(
+#     model_name='llama3.1',
+#     provider=OpenAIProvider(base_url='http://localhost:11434/v1')
+# )
+model = Agent(
     'gemini-2.0-flash',
-    deps_type= str,
-    # output_type= str,
-    system_prompt= system_prompt,
-    tools = [
+    # ollama_model,
+    deps_type=str,
+    system_prompt=system_prompt,
+    history_processors=[filter_responses, summarize_old_messages],
+    tools=[
         Tool(tools.find_mod_time, require_parameter_descriptions=True),
-        Tool(tools.send_noti, 
+        Tool(tools.send_noti,
              name="send_noti",
              description="Sends a pop-up notification to the user with a given message. Input: string."
-            ),
+             ),
         Tool(tools.add_span,
-             name = "add_span",
-             description = "Adds a span to the timetable. Input: day (string), start (string), end (string), name (string), type (string)."
-            ),
+             name="add_span",
+             description="Adds a span to the timetable. Input: day (string), start (string), end (string), name (string), type (string)."
+             ),
         Tool(tools.find_free_time,
-             name = "find_free_time",
-             description = "Finds free time slots in the timetable. Input: day (string), start (string), end (string)."
-            ),
+             name="find_free_time",
+             description="Finds free time slots in the timetable. Input: day (string), start (string), end (string)."
+             ),
         Tool(tools.find_email,
-             name = "find_email",
-             description = "Finds the email address of a person. Input: name (string)."
-            ),
+             name="find_email",
+             description="Finds the email address of a person. Input: name (string)."
+             ),
     ]
 )
 
-def bot_response(message, data_2 = ModelMessagesTypeAdapter.validate_python(data2)):
+def bot_response(message):
     tools.type.clear()
-    print(tools.data)
-    data.append({'sender': 'user', 'text': message})
-    ans = model.run_sync(message, message_history=data_2)
-    data.append({'sender': 'bot', 'text': ans.output})
-    with open('data.json', 'w') as file:
-        json.dump(data, file, indent = 2)
-        
-    #testing
-    data2 = to_jsonable_python(ans.all_messages())
-    with open('data2.json', 'w') as file:
-        json.dump(data2, file, indent =2)
-
+    ans = model.run_sync(message)
+    classified_message = tools.classify_command(message)
+    if(classified_message == 'module_arrangement' or classified_message == 'academic_plan'):
+        ans.output = 'OKAY'
     return {
+        'classified': classified_message,
         'type': tools.type,
         'response': ans.output,
     }

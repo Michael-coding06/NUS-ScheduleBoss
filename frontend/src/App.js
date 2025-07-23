@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Timetable from './components//TimeTable/Timetable'
+import Timetable from './components/Timetable/Timetable'
 import { useEffect, useState } from 'react';
 import Login from './components/LoginSignup/Login';
 import Signup from './components/LoginSignup/Signup';

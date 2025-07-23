@@ -1,10 +1,89 @@
 import json
+import re
+from typing import Dict, Optional
+
 type = {}
 
 day_order = {'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4}
 
-with open('../spans.json', 'r') as file:
-        data = json.load(file)
+# Classification patterns
+COMMAND_PATTERNS = {
+    'module_arrangement': {
+        'keywords': ['arrange modules', 'module arrangement', 'organize modules', 'schedule modules', 'plan modules'],
+        'patterns': [r'arrange.*modules?', r'organize.*modules?', r'schedule.*modules?']
+    },
+    'academic_plan': {
+        'keywords': ['academic plan', 'study plan', 'semester plan', 'course plan', 'academic schedule'],
+        'patterns': [r'academic.*plan', r'study.*plan', r'semester.*plan', r'course.*plan']
+    },
+    'find_mod_time': {
+        'keywords': ['module time', 'class time', 'lecture time', 'timetable for'],
+        'patterns': [r'when is.*(?:CS|EE|MA|ST)\d+', r'time.*(?:CS|EE|MA|ST)\d+', r'schedule.*(?:CS|EE|MA|ST)\d+']
+    },
+    'add_span': {
+        'keywords': ['add', 'schedule', 'book', 'create event', 'add task'],
+        'patterns': [r'add.*(?:task|event|span)', r'schedule.*(?:task|event)', r'book.*time']
+    },
+    'find_email': {
+        'keywords': ['find email', 'email for', 'contact', 'email address'],
+        'patterns': [r'email.*for', r'find.*email', r'contact.*for']
+    },
+    'find_free_time': {
+        'keywords': ['free time', 'available time', 'when free', 'open slots', 'meet', 'meeting'],
+        'patterns': [r'free.*time', r'available.*time', r'when.*free', r'open.*slot', r'when.*meet', r'meeting.*time']
+    },
+    'send_noti': {
+        'keywords': ['notification', 'notify', 'alert', 'remind'],
+        'patterns': [r'send.*notification', r'notify.*me', r'alert.*me', r'remind.*me']
+    }
+}
+
+def classify_command(user_input: str) -> Optional[str]:
+    """
+    Classify the user's command based on keywords and patterns.
+    
+    Args:
+        user_input: The user's input string
+        
+    Returns:
+        The classified command type or None if no match found
+    """
+    user_input_lower = user_input.lower()
+    
+    # Check for high-level commands first
+    module_arrangement_patterns = [
+        'arrange my modules', 'organize my schedule', 'help me plan my modules',
+        'module arrangement', 'schedule my classes'
+    ]
+    
+    academic_plan_patterns = [
+        'academic plan', 'study plan', 'semester planning', 'course planning',
+        'plan my semester', 'academic schedule'
+    ]
+    
+    for pattern in module_arrangement_patterns:
+        if pattern in user_input_lower:
+            type['module_arrangement'] = None
+            return 'module_arrangement'
+    
+    for pattern in academic_plan_patterns:
+        if pattern in user_input_lower:
+            type['academic_plan'] = None
+            return 'academic_plan'
+    
+    # Then check for specific function commands
+    for command_type, config in COMMAND_PATTERNS.items():
+        # Check keywords
+        for keyword in config['keywords']:
+            if keyword in user_input_lower:
+                return command_type
+        
+        # Check regex patterns
+        for pattern in config['patterns']:
+            if re.search(pattern, user_input_lower):
+                return command_type
+    
+    return None
 
 def find_mod_time(module: str) ->str:
     """
@@ -21,10 +100,6 @@ def find_mod_time(module: str) ->str:
         data = json.load(file)
     module_time = data.get(module)
     sorted_data = sorted(module_time, key=lambda x: day_order[x['day']])
-    # formatted_output = {}
-    # for timeslot in sorted_data:
-    #     if timeslot['day'] not in formatted_output: formatted_output[timeslot['day']] =[]
-    #     formatted_output[timeslot['day']].append(f"{timeslot['start']}-{timeslot['end']}")
     return sorted_data
 
 from pydantic import BaseModel
@@ -101,4 +176,4 @@ def find_free_time(day: str, email: str, start = '09:00', end = '19:00', data_sp
             for i in range(span_start, span_end):
                 if i in free_time:
                     free_time.remove(i)  
-    return free_time 
+    return free_time

@@ -53,6 +53,7 @@ async def main():
 
         with open("all_modules_timetable.json", "w") as f:
             json.dump(result, f)
+    
 
 if __name__ == "__main__":
     asyncio.run(main())

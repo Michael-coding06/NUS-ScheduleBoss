@@ -7,18 +7,19 @@ const spanSchema = new mongoose.Schema({
     name: { type: String, required: true },
     type: { type: String, required: true }, 
     visibility: { type: Map, of: Boolean, default: {} },
+    details: {type: String}
 });
 
-const sectionSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    visibility: { type: Map, of: Boolean, default: {} },
-    display: {type: Map, of: Boolean, default: {}},
-    spans: [spanSchema],
-});
+const colorSchema = new mongoose.Schema({
+    box: String,
+    span: String
+}, { _id: false });
 
 const userSchema = new mongoose.Schema({
     userEmail: { type: String, required: true, unique: true },
-    sections: [sectionSchema],
+    sections: [{type: Map, of: Boolean}],
+    spans: [spanSchema],
+    colors: [{type: Map, of: colorSchema}]
 });
 
 module.exports = mongoose.model('User', userSchema);
