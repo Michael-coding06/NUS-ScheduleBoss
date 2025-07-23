@@ -139,21 +139,6 @@ def send_noti(message: str) ->str:
         timeout = 5
     )
 
-def find_email(name: str, data_mail = data) -> str:
-    """
-    Search for the part of the person's name that appears in their email address. (e.g, "Khoa" in "vietkhoaktk@gmail.com")
-
-    Args:
-        name: The substring to search for in email addresses.
-        data_mail: The dictionary loaded from 'spans.json'.
-
-    Returns:
-        Email address that contains the given name as a substring.
-    """
-    type['find_email'] = None 
-    email = [email for email in data_mail if name.lower() in email.lower()]
-    return email 
-
 def find_free_time(day: str, email: str, start = '09:00', end = '19:00', data_spans = data):
     """
     Find free time slots in the timetable for a specific day.
