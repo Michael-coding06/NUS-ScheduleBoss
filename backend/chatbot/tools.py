@@ -139,26 +139,26 @@ def send_noti(message: str) ->str:
         timeout = 5
     )
 
-def find_free_time(day: str, email: str, start = '09:00', end = '19:00', data_spans = data):
-    """
-    Find free time slots in the timetable for a specific day.
+# def find_free_time(day: str, email: str, start = '09:00', end = '19:00', data_spans = data):
+#     """
+#     Find free time slots in the timetable for a specific day.
 
-    Args:
-        day: The day to check for free time slots (e.g., 'Mon', 'Tue', 'Wed', 'Thu', 'Fri').
-        data_spans: The dictionary loaded from 'spans.json'.
+#     Args:
+#         day: The day to check for free time slots (e.g., 'Mon', 'Tue', 'Wed', 'Thu', 'Fri').
+#         data_spans: The dictionary loaded from 'spans.json'.
 
-    Returns:
+#     Returns:
 
-    """
-    type['find_free_time'] = None
-    start = int(start.replace(':00', ''))
-    end = int(end.replace(':00', ''))
-    free_time = [i for i in range(start, end + 1)]
-    for span in data_spans[email]:
-        if(span['day'] == day):
-            span_start = int(span['start'].replace(':00', ''))
-            span_end = int(span['end'].replace(':00', ''))
-            for i in range(span_start, span_end):
-                if i in free_time:
-                    free_time.remove(i)  
-    return free_time
+#     """
+#     type['find_free_time'] = None
+#     start = int(start.replace(':00', ''))
+#     end = int(end.replace(':00', ''))
+#     free_time = [i for i in range(start, end + 1)]
+#     for span in data_spans[email]:
+#         if(span['day'] == day):
+#             span_start = int(span['start'].replace(':00', ''))
+#             span_end = int(span['end'].replace(':00', ''))
+#             for i in range(span_start, span_end):
+#                 if i in free_time:
+#                     free_time.remove(i)  
+#     return free_time
