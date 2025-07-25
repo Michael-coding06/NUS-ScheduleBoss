@@ -6,7 +6,6 @@ import os
 import tools
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
-
 load_dotenv()
 system_prompt = """\
 You are a helpful, friendly and concise scheduling assistant.
@@ -24,13 +23,13 @@ def summarize_old_messages(messages: list[ModelMessage]) -> list[ModelMessage]:
     return messages[-20:]
 
 api_key = os.getenv("GEMINI_API_KEY")
-# ollama_model = OpenAIModel(
-#     model_name='llama3.1',
-#     provider=OpenAIProvider(base_url='http://localhost:11434/v1')
-# )
+ollama_model = OpenAIModel(
+    model_name='llama3.1',
+    provider=OpenAIProvider(base_url='http://localhost:11434/v1')
+)
 model = Agent(
-    'gemini-2.0-flash',
-    # ollama_model,
+    # 'gemini-2.0-flash',
+    ollama_model,
     deps_type=str,
     system_prompt=system_prompt,
     history_processors=[filter_responses, summarize_old_messages],
@@ -44,6 +43,10 @@ model = Agent(
              name="add_span",
              description="Adds a span to the timetable. Input: day (string), start (string), end (string), name (string), type (string)."
              ),
+        Tool(tools.review_module,
+                    name = 'module_review',
+                    description = 'Find reviews of module on Reddit ao8nd sumamrize to user in terms of difficulty, workload, professor, content, tips and general. Input: String'
+               )
         # Tool(tools.find_free_time,
         #      name="find_free_time",
         #      description="Finds free time slots in the timetable. Input: day (string), start (string), end (string)."
