@@ -53,9 +53,10 @@ const Timetable = ({token}) => {
         previewSpans,
         setPreviewSpans,
         isSpanPreviewed,
-
         academicPlan,
-        setAcademicPlan
+        setAcademicPlan,
+        showSlots,
+        setShowSlots,
     } = useUI()
     let navigate = useNavigate()
     let userEmail = token.user.user_metadata.email;
@@ -356,7 +357,7 @@ const Timetable = ({token}) => {
                                         onChange={(e) => setNewSectionName(e.target.value)} 
                                         onKeyDown={(e) => {
                                             if (e.key === 'Enter' && newSectionName.trim()) {
-                                                addCustomSection();
+                                                addCustomSection(newSectionName.trim());
                                                 setActiveSection(newSectionName);
                                                 setDropdownOpen(false);
                                             } else if (e.key === 'Escape') {
@@ -583,10 +584,10 @@ const Timetable = ({token}) => {
                                 showChat = {showChat}
                                 messages = {messages}
                                 setMessages={setMessages}
-                                moduleArrange = {moduleArrange}
                                 setModuleArrange = {setModuleArrange}
-                                academicPlan = {academicPlan}
                                 setAcademicPlan = {setAcademicPlan}
+                                setShowSlots = {setShowSlots}
+                                addCustomSection = {addCustomSection}
                                 />
             </div>
             <button className='chat-toggler' onClick={() => setShowChat(!showChat)}>

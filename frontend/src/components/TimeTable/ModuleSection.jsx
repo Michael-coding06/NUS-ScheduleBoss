@@ -9,8 +9,6 @@ const ModuleSection = ({
     sectionColors,
     modules, 
     setModules,
-    // hiddenSpans,
-    // setHiddenSpans,
 }) => {
     const [newModuleName, setNewModuleName] = useState("");
     const [showError, setShowError] = useState(false);

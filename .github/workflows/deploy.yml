@@ -1,5 +1,4 @@
 name: Build and Deploy React App
-
 on:
   push:
     branches: [ "master" ]  # Change to your branch name
@@ -51,8 +50,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  deploy:
+deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

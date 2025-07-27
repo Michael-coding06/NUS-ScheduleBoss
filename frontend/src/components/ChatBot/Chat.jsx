@@ -10,10 +10,10 @@ const Chat = ({
     setShowChat,
     messages,
     setMessages,
-    moduleArrange,
     setModuleArrange,
-    academicPlan,
-    setAcademicPlan    
+    setAcademicPlan,
+    setShowSlots,
+    addCustomSection
 }) => {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
@@ -44,18 +44,41 @@ const Chat = ({
             }),
         });
         const result = await response.json()
-        console.log(result['classified'])
-        console.log(result['type'])
+        console.log('Type of command', result['classified'])
         if('add_span' in result['type']){
             const spans = result['type'].add_span;
-            setSelectedSpans(prev => [...prev, ...spans]);
-            setHighlightedSpans(prev => [...prev, ...spans]);
+            if(spans.length == 0){
+                setMessages(prev => [...prev, {
+                    sender: 'bot',
+                    text: 'Sorry, I couldn\'t find that module slot. Please verify the module code and time details.'
+                }]);
+                setLoading(false);
+                return;
+            }
+            console.log(spans)
+            let capitalizedType = spans[0].type.charAt(0).toUpperCase() + spans[0].type.slice(1);
+            addCustomSection(capitalizedType)
+            const spans_ = spans
+            .filter(span => span.type !== 'module')
+            .map(span => ({
+                name: span.name,
+                type: span.type.toLowerCase(),
+                visibility: {default: true},
+                day: span.day,
+                start: span.start,
+                end: span.end,
+                details: ''
+            }))
+            setSelectedSpans(prev => [...prev, ...spans_]);
+            setHighlightedSpans(prev => [...prev, ...spans_]);
             const mod = spans
                 .filter(span => span.type === 'module')
                 .map(span => ({
                     name: span.name,
+                    type: 'module',
                     subtitle: 'No Exam • 0 Units',
-                    visibility: { default: true }
+                    visibility: { default: true },
+                    details: ''
                 }));
             setModules(prev => [...prev, ...mod]);
         }
@@ -65,10 +88,19 @@ const Chat = ({
         if(result['classified'] == 'academic_plan'){
             setAcademicPlan(true)
         }
+        if('find_mod_time' in result['type']){
+            console.log(result)
+            setShowSlots(true)
+        }
         setMessages(prev => {
             const updated = [...prev];
             updated.pop();
-            return [...updated, { sender: 'bot', text: result['response'] }];
+            const lines = result['response'].split('\n');
+            const newMessages = lines
+                .filter(line => line.trim() !== '') 
+                .map(line => ({ sender: 'bot', text: line.trim() }));
+            
+            return [...updated, ...newMessages];
         });
         setLoading(false);
     }
