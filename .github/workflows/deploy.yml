@@ -2,7 +2,7 @@ name: Build and Deploy React App
 
 on:
   push:
-    branches: [ "master" ] 
+    branches: [ "master" ]  # Change to your branch name
   workflow_dispatch:
 
 permissions:
@@ -46,11 +46,19 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './frontend/build'
+          path: './frontend/build'  # Adjust path based on your build output
           
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        environment:
-          name: github-pages
-          url: ${{ steps.deployment.outputs.page_url }}
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
