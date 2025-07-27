@@ -17,7 +17,7 @@ export default function useUI (){
     const [spanDetails, setSpanDetails] = useState('');
     const [moduleArrange, setModuleArrange] = useState(false);
     const [academicPlan, setAcademicPlan] = useState(false)
-
+    const [showSlots, setShowSlots] = useState(false)
     const colorPalette = [
         { box: '#f37335', span: 'linear-gradient(90deg, #ffb347 0%, #f37335 100%)' },
         { box: '#ffcc80', span: 'linear-gradient(90deg, #ffcc80 0%, #ffb347 100%)' },
@@ -85,8 +85,11 @@ export default function useUI (){
         setSectionVisibility(prev => ({...prev, [sectionName]: !prev[sectionName]}))
     }
 
-    const addCustomSection = () =>{
-        const newSection = newSectionName.trim();
+    const addCustomSection = (sectionName) =>{
+        const newSection = sectionName.trim() || '';
+        if (newSection == 'Module' || newSection == 'Task') {
+            return
+        }
         if(newSection && !customSections.includes(newSection)){
             const availableColors = colorPalette.filter(color => !usedColors.includes(color));
             let selectedColor;
@@ -180,6 +183,8 @@ export default function useUI (){
         isSpanPreviewed,
 
         academicPlan,
-        setAcademicPlan
+        setAcademicPlan,
+        showSlots,
+        setShowSlots
     }
 }

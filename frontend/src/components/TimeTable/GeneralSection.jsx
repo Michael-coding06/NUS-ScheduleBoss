@@ -9,8 +9,6 @@ const GeneralSection = ({
     highlightedSpans,
     setHighlightedSpans,
     sectionColors
-    // hiddenSpans,
-    // setHiddenSpans,
 }) => {
     const [newSpanName, setNewSpanName] = useState("");
     const [spanDay, setSpanDay] = useState(days[0]);
