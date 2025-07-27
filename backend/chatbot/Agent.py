@@ -33,14 +33,16 @@ def filter_responses(messages: list[ModelMessage]) -> list[ModelMessage]:
 def summarize_old_messages(messages: list[ModelMessage]) -> list[ModelMessage]:
     return messages[-20:]
 
-api_key = os.getenv("GEMINI_API_KEY")
-ollama_model = OpenAIModel(
-    model_name='llama3.1',
-    provider=OpenAIProvider(base_url='http://localhost:11434/v1')
-)
+# api_key = os.getenv("GEMINI_API_KEY")
+chatbot_ket = os.getenv("CHATBOT_KEY")
+# ollama_model = OpenAIModel(
+#     model_name='llama3.1',
+#     provider=OpenAIProvider(base_url='http://localhost:11434/v1')
+# )
 
 ollama_Agent = Agent(
-    ollama_model,
+    # ollama_model,
+    'gpt-4.1-mini',
     deps_type=str,
     system_prompt=ollama_system_prompt,
     history_processors=[filter_responses, summarize_old_messages],
@@ -62,7 +64,8 @@ ollama_Agent = Agent(
 )
 
 gemini_agent = Agent(
-    'gemini-2.0-flash',
+    'gpt-4.1-mini',
+    # 'gemini-2.0-flash',
     deps_type=str,
     system_prompt=system_prompt,
     history_processors=[filter_responses, summarize_old_messages],
