@@ -1,4 +1,5 @@
 name: Build and Deploy React App
+
 on:
   push:
     branches: [ "master" ]  # Change to your branch name
@@ -25,10 +26,8 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: './frontend/package-lock.json'
           
-      - name: Change to frontend directory
-        run: cd frontend
-        
       - name: Install dependencies
         run: |
           cd frontend
@@ -45,12 +44,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './frontend/build'  # Adjust path based on your build output
-          
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-deploy:
+          path: './frontend/build'
+
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
