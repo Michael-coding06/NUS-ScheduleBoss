@@ -1,18 +1,28 @@
 import './Chat.css'
 import logo from './logo.png'
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, useRef} from 'react'
 
 const Chat = ({
     setModules,
-    setTasks,
     setSelectedSpans,
     setHighlightedSpans,
     showChat,
     setShowChat,
+    messages,
+    setMessages,
+    moduleArrange,
+    setModuleArrange,
+    academicPlan,
+    setAcademicPlan    
 }) => {
     const [message, setMessage] = useState('');
-    const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(false);
+    const containerRef = useRef(null);
+    useEffect(() => {
+        if (containerRef.current) {
+        containerRef.current.scrollTop = containerRef.current.scrollHeight;
+        }
+    }, [messages]);
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(message.trim()){
@@ -22,9 +32,9 @@ const Chat = ({
         // test
         setLoading(true)
         setMessages(prev => [...prev, { sender: 'bot', text: '.' }]);
-
-        const response = await fetch('https://chatbot-server-6gnn.onrender.com/data',{
-        // const response = await fetch('http://localhost:3002/data', {
+        const CHATBOT = process.env.REACT_APP_CHATBOT_URL
+        console.log(CHATBOT)
+        const response = await fetch(CHATBOT,{
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -33,25 +43,27 @@ const Chat = ({
                 inputs: message.trim()
             }),
         });
-        const result = await response.json();
-        console.log(result)
+        const result = await response.json()
+        console.log(result['classified'])
+        console.log(result['type'])
         if('add_span' in result['type']){
             const spans = result['type'].add_span;
             setSelectedSpans(prev => [...prev, ...spans]);
             setHighlightedSpans(prev => [...prev, ...spans]);
             const mod = spans
                 .filter(span => span.type === 'module')
-                .map(modules => ({
-                    name: modules.name,
+                .map(span => ({
+                    name: span.name,
                     subtitle: 'No Exam • 0 Units',
+                    visibility: { default: true }
                 }));
             setModules(prev => [...prev, ...mod]);
-            const task = spans
-                .filter(span => span.type === 'task')
-                .map(tasks => ({
-                    name: tasks.name,
-                }));
-            setTasks(prev => [...prev, ...task]);
+        }
+        if(result['classified'] == 'module_arrangement'){
+            setModuleArrange(true)
+        } 
+        if(result['classified'] == 'academic_plan'){
+            setAcademicPlan(true)
         }
         setMessages(prev => {
             const updated = [...prev];
@@ -70,9 +82,9 @@ const Chat = ({
                             ChatBot
                         </h2>
                     </div>
-                    <button className='chat-button' onClick={() => setShowChat(!showChat)}>✖</button>
+                    <button className='chat-button' onClick={() => setShowChat(!showChat)}>✖</button>  
                 </div>
-                <div className="chat-body">
+                <div className="chat-body" ref={containerRef}>
                     {messages.map((msg, index) => (
                         <div key = {index} className = {`${msg.sender}-message`}>
                             {msg.sender === 'bot' && <img src = {logo} className='chat-img'/>}
@@ -84,6 +96,7 @@ const Chat = ({
                 </div>
                 <div className="chat-footer">
                     <form onSubmit={handleSubmit} className='chat-form'>
+                        <button type = 'button' className= 'chat-button tooltip-container' onClick={() => setMessages([])}>➕<span className="tooltip-text">New chat</span></button>
                         <input type="text" placeholder='Type here...' className='message-input' value={message}
                         onChange={(e) =>setMessage(e.target.value)}/>
                         <button type = 'submit' className='chat-button'>↑</button>

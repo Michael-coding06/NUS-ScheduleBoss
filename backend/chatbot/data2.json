@@ -444,5 +444,329 @@
       "finish_reason": "STOP"
     },
     "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "hi",
+        "timestamp": "2025-07-16T06:01:40.582942Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "Hi, how can I help you today?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 870,
+      "response_tokens": 10,
+      "total_tokens": 880,
+      "details": {
+        "text_candidates_tokens": 10,
+        "text_prompt_tokens": 870
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-16T06:01:42.017627Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "hi",
+        "timestamp": "2025-07-16T08:23:01.046510Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "Hello! What can I do for you?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 881,
+      "response_tokens": 10,
+      "total_tokens": 891,
+      "details": {
+        "text_candidates_tokens": 10,
+        "text_prompt_tokens": 881
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-16T08:23:03.489379Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "what can you do",
+        "timestamp": "2025-07-16T08:46:44.023869Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "I can help you with the following:\n* Find the timetable for a specific module (e.g., CS1010E).\n* Add a module or task to your timetable.\n* Find the email address of a person.\n* Find free time slots in the timetable for meetings.\n\nHow can I help you today?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 895,
+      "response_tokens": 71,
+      "total_tokens": 966,
+      "details": {
+        "text_candidates_tokens": 71,
+        "text_prompt_tokens": 895
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-16T08:46:47.104959Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "hi",
+        "timestamp": "2025-07-16T16:50:43.309151Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "Hi! How can I help you today?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 967,
+      "response_tokens": 10,
+      "total_tokens": 977,
+      "details": {
+        "text_candidates_tokens": 10,
+        "text_prompt_tokens": 967
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-16T16:50:45.852193Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "hi",
+        "timestamp": "2025-07-16T17:20:08.675827Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "Hi there! What can I do for you today?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 978,
+      "response_tokens": 12,
+      "total_tokens": 990,
+      "details": {
+        "text_candidates_tokens": 12,
+        "text_prompt_tokens": 978
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-16T17:20:09.849912Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "hi",
+        "timestamp": "2025-07-17T07:03:19.422028Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "Hello! How can I assist you today?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 991,
+      "response_tokens": 10,
+      "total_tokens": 1001,
+      "details": {
+        "text_candidates_tokens": 10,
+        "text_prompt_tokens": 991
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-17T07:03:20.573664Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "hiii",
+        "timestamp": "2025-07-17T07:46:45.395892Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "Hi! How can I help you today?\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 1003,
+      "response_tokens": 10,
+      "total_tokens": 1013,
+      "details": {
+        "text_candidates_tokens": 10,
+        "text_prompt_tokens": 1003
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-17T07:46:46.584531Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "hi",
+        "timestamp": "2025-07-17T08:02:33.311219Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "Hi! Let me know how I can help you.\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 1014,
+      "response_tokens": 12,
+      "total_tokens": 1026,
+      "details": {
+        "text_candidates_tokens": 12,
+        "text_prompt_tokens": 1014
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-17T08:02:34.559081Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
+  },
+  {
+    "parts": [
+      {
+        "content": "what's your name",
+        "timestamp": "2025-07-17T08:57:47.492352Z",
+        "part_kind": "user-prompt"
+      }
+    ],
+    "instructions": null,
+    "kind": "request"
+  },
+  {
+    "parts": [
+      {
+        "content": "I don't have a name. I'm a large language model.\n",
+        "part_kind": "text"
+      }
+    ],
+    "usage": {
+      "requests": 1,
+      "request_tokens": 1031,
+      "response_tokens": 17,
+      "total_tokens": 1048,
+      "details": {
+        "text_candidates_tokens": 17,
+        "text_prompt_tokens": 1031
+      }
+    },
+    "model_name": "gemini-2.0-flash",
+    "timestamp": "2025-07-17T08:57:48.573706Z",
+    "kind": "response",
+    "vendor_details": {
+      "finish_reason": "STOP"
+    },
+    "vendor_id": null
   }
 ]

@@ -18,6 +18,6 @@ def handle_data():
     return jsonify(response)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 3002))
+    port = os.getenv('CHATBOT_URL')
     app.run(host='0.0.0.0', port=port)
 
