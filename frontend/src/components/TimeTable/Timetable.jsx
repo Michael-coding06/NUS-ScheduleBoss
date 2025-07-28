@@ -197,7 +197,7 @@ const Timetable = ({token}) => {
     return (
         <div className="timetable">
             <div className="header-row">
-                <h1 className="header">Khoa's Schedule</h1>
+                <h1 className="header">My Schedule</h1>
                 <div className='div-button'>
                     <button onClick={handleLogout} className='submit-2'>Log Out</button>
                 </div>
