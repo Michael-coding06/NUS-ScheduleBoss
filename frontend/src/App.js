@@ -1,9 +1,10 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Timetable from './components/TimeTable/Timetable'
+import Timetable from './components/Timetable/Timetable'
 import { useEffect, useState } from 'react';
 import Login from './components/LoginSignup/Login';
 import Signup from './components/LoginSignup/Signup';
+import AcadPlan from './components/AcadPlan/AcadPlan';
 
 function App() {
   const [token, setToken] = useState(() => {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/timetable" element={<Timetable token={token}/>} />        
           <Route path="/login" element={<Login setToken={setToken} />} />
           <Route path="/signup" element={<Signup/>} />
+          <Route path="/acadplan" element={<AcadPlan/>} />
           <Route path="/" element={<Signup/>}/>
            <Route path="*" element={<Navigate to= "/"/>}/>
         </Routes>

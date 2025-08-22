@@ -9,8 +9,11 @@ import { useNavigate } from 'react-router-dom';
 import GameExperience from '../GameModel/GameExperience';
 import chat_icon from '../ChatBot/logo.png'
 import Chat from '../ChatBot/Chat'
+import { Link } from "react-router-dom";
 
 import moduleArrangement from "./Hook/useArrange";
+import AcadPlan from "../AcadPlan/AcadPlan";
+
 
 const Timetable = ({token}) => {
     const [showChat, setShowChat] = useState(false);
@@ -60,6 +63,7 @@ const Timetable = ({token}) => {
     } = useUI()
     let navigate = useNavigate()
     let userEmail = token.user.user_metadata.email;
+    let name = token.user.user_metadata.name || 'My';
     const [spanHover, setSpanHover] = useState(false);
     const [hoveredSpan, setHoveredSpan] = useState('');
     const [hoverPosition, setHoverPosition] = useState({x:0, y:0});
@@ -73,13 +77,11 @@ const Timetable = ({token}) => {
     useEffect(() => {
         const handleClickOutside = (event) => {
             const isClickInsideSpanDetails = event.target.closest('.span-details');
-            // const isClickInsideTable = event.target.closest('td');
             if (!isClickInsideSpanDetails) {
                 setSpanHover(false);
                 setHoveredSpan("");
             }
         };
-
         if (spanHover) {
             document.addEventListener('mousedown', handleClickOutside);
         }
@@ -197,7 +199,9 @@ const Timetable = ({token}) => {
     return (
         <div className="timetable">
             <div className="header-row">
-                <h1 className="header">Khoa's Schedule</h1>
+                <h1 className="header">
+                    <Link to = "/acadplan">{name} Schedule</Link>
+                </h1>
                 <div className='div-button'>
                     <button onClick={handleLogout} className='submit-2'>Log Out</button>
                 </div>
