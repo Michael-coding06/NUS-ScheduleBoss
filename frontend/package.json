@@ -36,7 +36,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-
     "test:e2e": "cypress run",
     "test:e2e:open": "cypress open",
     "test:e2e:headless": "cypress run --headless",
@@ -66,10 +65,9 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "cypress": "^13.6.0",
     "jest": "^27.5.1",
     "postcss": "^8.5.4",
-    "tailwindcss": "^4.1.8",
-
-    "cypress": "^13.6.0"
+    "tailwindcss": "^4.1.8"
   }
 }
