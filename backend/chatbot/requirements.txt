@@ -8,3 +8,4 @@ plyer
 pydantic-core
 gunicorn
 praw
+opentelemetry-sdk

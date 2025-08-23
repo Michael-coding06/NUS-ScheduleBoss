@@ -12,8 +12,6 @@ import Chat from '../ChatBot/Chat'
 import { Link } from "react-router-dom";
 
 import moduleArrangement from "./Hook/useArrange";
-import AcadPlan from "../AcadPlan/AcadPlan";
-
 
 const Timetable = ({token}) => {
     const [showChat, setShowChat] = useState(false);
