@@ -525,6 +525,8 @@ const Timetable = ({token}) => {
                     </div>
                 </div>
             )}
+
+            {/* WTFFFFF */}
             {(academicPlan) && (
                 <div className="module-arrange">
                     <div>
