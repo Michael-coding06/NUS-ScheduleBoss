@@ -1,51 +1,52 @@
 .academic-planner {
   min-height: 100vh;
-  padding: 20px;
+  padding: 15px;
+  font-size: 0.9rem;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .header h1 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: white;
 }
 
 .header h2 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: #ffb347;
   font-weight: normal;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 /* Recommendation section */
 .recommendation-box {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 179, 71, 0.3);
-  border-radius: 20px;
-  padding: 25px;
-  margin: 20px auto;
-  max-width: 900px;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px auto;
+  max-width: 800px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
 }
 
 .recommendation-title {
   color: #ffb347;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-align: center;
 }
 
 .recommendation-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 12px;
   justify-content: center;
   align-items: center;
 }
@@ -59,18 +60,39 @@
 .module-box {
   background-color: rgba(235, 201, 156, 0.5);
   border: 1px solid #d1d5db;
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
   width: fit-content;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #ffb347;
   align-items: center;
   cursor: pointer;
   transition: all 0.4s ease;
   white-space: nowrap;
   animation: flickering 4s infinite;
-  
+}
+
+.move-sem {
+  background: #e6a83d;
+  color: white;
+  border: none;
+  margin: 15px 15px 0 15px;
+  border-radius: 10px;
+  padding: 8px 15px;
+  font-size: 14px;
+  box-shadow: 
+    0 3px 10px rgba(46, 125, 50, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.move-sem:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 14px rgba(46, 125, 50, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 @keyframes flickering {
@@ -94,7 +116,7 @@
 
 .module-box:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 179, 71, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 179, 71, 0.3);
   border-color: rgba(255, 179, 71, 0.6);
 }
 
@@ -102,58 +124,184 @@
 .mod-planning {
   display: flex;
   direction: rtl;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .mod-year {
   direction: ltr;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-right: 7%;
+  gap: 10px;
+  min-width: 140px;
+  flex: 1;
 }
 
 .selected {
-  color: black;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid #d1d5db;
-  border-color: rgba(255, 179, 71, 0.6);
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
+  color: #2d2d2d;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  border: 1px solid rgba(255, 179, 71, 0.4);
+  border-radius: 8px;
+  padding: 8px 12px;
   width: fit-content;
-  font-size: 0.85rem;
+  max-width: 120px;
+  font-size: 11px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   white-space: nowrap;
-  margin-top: 15px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .selected:hover {
-  color: black;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(255, 179, 71, 0.2);
+  border-color: rgba(255, 179, 71, 0.8);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9));
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Prerequisite tree structure */
+.prereq-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 15px 0;
+  position: relative;
+}
+
+.operator-container {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  position: relative;
+}
+
+.operator-label {
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 15px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.prereq-group {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  padding-left: 15px;
+  border-left: 2px solid rgba(255, 179, 71, 0.3);
+  gap: 8px;
+}
+
+.module-option {
+  color: white;
+  background: rgba(100, 200, 200, 0.7);
+  border: 1px solid rgba(100, 200, 200, 0.8);
+  border-radius: 6px;
+  padding: 6px 10px;
+  width: fit-content;
+  max-width: 100px;
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  margin: 3px 0;
+  animation: moduleFlickering 3s infinite;
+}
+
+@keyframes moduleFlickering {
+  0%, 100% {
+    background: rgba(100, 200, 200, 0.7);
+    color: white;
+    border-color: rgba(100, 200, 200, 0.8);
+  }
+  25% {
+    background: rgba(120, 220, 220, 0.8);
+    color: #1a1a1a;
+    border-color: rgba(120, 220, 220, 0.9);
+  }
+  50% {
+    background: rgba(80, 180, 180, 0.6);
+    color: #f0f0f0;
+    border-color: rgba(80, 180, 180, 0.7);
+  }
+  75% {
+    background: rgba(140, 240, 240, 0.9);
+    color: #2d2d2d;
+    border-color: rgba(140, 240, 240, 1);
+  }
+}
+
+.module-option:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(100, 200, 200, 0.3);
+  animation-play-state: paused;
+  background: rgba(120, 220, 220, 0.9);
+  color: #1a1a1a;
 }
 
 /* Module info tooltip */
 .module-info {
   background-color: rgba(30, 30, 30, 0.95);
-  padding: 15px 20px;
+  padding: 12px 16px;
   color: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  max-width: 280px;
   text-align: center;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.4;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 179, 71, 0.3);
   z-index: 1000;
   animation: tooltipFadeIn 0.2s ease-out;
 }
-.year-header{
-  color: white
+
+.year-header {
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  min-width: 100px;
+  text-align: center;
 }
+
+.current-semester {
+  color: #ffb347;
+  border: 2px solid #ffb347;
+  border-radius: 8px;
+  background: rgba(255, 179, 71, 0.1);
+  box-shadow: 0 0 10px rgba(255, 179, 71, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 179, 71, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 179, 71, 0.5);
+  }
+}
+
 @keyframes tooltipFadeIn {
   from {
     opacity: 0;
@@ -167,26 +315,50 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+  .mod-planning {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
   .mod-year {
-    gap: 10px;
+    gap: 8px;
+    min-width: auto;
   }
   
   .recommendation-bar {
-    gap: 10px;
+    gap: 8px;
   }
   
-  .module-box, .selected {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.8rem;
+  .module-box, .selected, .module-option {
+    padding: 6px 10px;
+    font-size: 10px;
+    max-width: 100px;
+  }
+  
+  .year-header {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+  
+  .academic-planner {
+    padding: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .academic-planner {
-    padding: 15px;
+    padding: 10px;
   }
   
   .recommendation-box {
-    padding: 20px 15px;
+    padding: 15px 12px;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .header h2 {
+    font-size: 1rem;
   }
 }
