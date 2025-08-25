@@ -1,7 +1,7 @@
 import './AcadPlan.css';
 import React, { useEffect, useState } from 'react';
 import { core_modules, recommended_modules, prereq_tree } from './data';
-
+import {moduleDetails} from '../Timetable/data/data'
 const AcadPlan = () => {
   const [showInfo, setShowInfo] = useState(false);
   const [hoveredModule, setHoveredModule] = useState(null);
@@ -17,6 +17,7 @@ const AcadPlan = () => {
   const handleModuleHover = (e, module) => {
     setShowInfo(true);
     const rect = e.currentTarget.getBoundingClientRect();
+    console.log(module)
     setHoverPosition({
       x: rect.left + (rect.width / 2),
       y: rect.top + window.scrollY - 10
@@ -47,15 +48,18 @@ const AcadPlan = () => {
     setClickedModule(module.name);
   };
 
-  const PrereqModules = (node, operator) => {
+  const PrereqModules = (node) => {
     if (typeof node === 'string') {
-      return <span className= "module-option" key={node}>{node}</span>;
+      return <span className= "module-option" key={node} 
+        onMouseEnter={(e) => handleModuleHover(e, node)}
+        onMouseLeave={handleModuleLeave}
+      >{node}</span>;
     }
     if (typeof node === 'object' && !Array.isArray(node)) {
       return Object.entries(node).map(([operator, children], index) => (
         <div className="operator-container" key={`${operator}-${index}`}>
           <div className={operator === 'and' ? 'prereq-group-and' : 'prereq-group-or'}>
-            {PrereqModules(children, operator)}
+            {PrereqModules(children)}
           </div>
         </div>
       ));
@@ -64,7 +68,7 @@ const AcadPlan = () => {
     if (Array.isArray(node)) {
       return node.map((item, index) => (
         <div key={index}>
-          {PrereqModules(item, node.length === 1)}
+          {PrereqModules(item)}
         </div>
       ));
     }
@@ -245,7 +249,7 @@ const AcadPlan = () => {
             transform: 'translateX(-50%) translateY(-100%)',
           }}
         >
-          {hoveredModule.info}
+          {typeof hoveredModule !== 'string' ? hoveredModule.info : moduleDetails[hoveredModule]}
         </div>
       )}
 
