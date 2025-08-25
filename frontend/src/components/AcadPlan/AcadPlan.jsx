@@ -1,17 +1,19 @@
 import './AcadPlan.css';
-import React, { Children, useState } from 'react';
-import { core_modules,recommended_modules, prereq_tree } from './data';
+import React, { useEffect, useState } from 'react';
+import { core_modules, recommended_modules, prereq_tree } from './data';
 
 const AcadPlan = () => {
   const [showInfo, setShowInfo] = useState(false);
   const [hoveredModule, setHoveredModule] = useState(null);
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
   const [selectedModules, setSelectedModules] = useState([]);
-  // const [acceptModule, setAcceptModule] = useState(false);
-  const [cancelModule, setCancelModule] = useState(false)
   const [currentSemester, setCurrentSemester] = useState(8);
-  const [academicModules, setAcademicModules] = useState(core_modules)
-  
+  const [academicModules, setAcademicModules] = useState(core_modules);
+  const [showPrereq, setShowPrereq] = useState(false);
+  const [clickedModule, setClickedModule] = useState(null);
+  const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
+  const [lineCoords, setLineCoords] = useState(null);
+
   const handleModuleHover = (e, module) => {
     setShowInfo(true);
     const rect = e.currentTarget.getBoundingClientRect();
@@ -29,37 +31,93 @@ const AcadPlan = () => {
 
   const handleModuleSelect = (module) => {
     if (!selectedModules.includes(module)) {
-      console.log(prereq_tree[module.name])
+      console.log(prereq_tree[module.name]);
       setSelectedModules([...selectedModules, module]);
-      academicModules[`Sem ${currentSemester}`].push(module)
+      academicModules[`Sem ${currentSemester}`].push(module);
     }
   };
 
-  const PrereqModules = (node) => {
-    if (typeof node === 'string'){
-      return <span className="module-option" key={node}>{node}</span>
+  const handleModuleClick = (e, module) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setClickPosition({
+      x: rect.left + (rect.width / 2),
+      y: rect.top + window.scrollY + (rect.height / 2) // Use center of module
+    });
+    setShowPrereq(!showPrereq);
+    setClickedModule(module.name);
+  };
+
+  const PrereqModules = (node, operator) => {
+    if (typeof node === 'string') {
+      return <span className= "module-option" key={node}>{node}</span>;
     }
-    
     if (typeof node === 'object' && !Array.isArray(node)) {
       return Object.entries(node).map(([operator, children], index) => (
         <div className="operator-container" key={`${operator}-${index}`}>
-          <div className="operator-label">{operator}</div>
-          <div className="prereq-group">
-            {PrereqModules(children)}
+          <div className={operator === 'and' ? 'prereq-group-and' : 'prereq-group-or'}>
+            {PrereqModules(children, operator)}
           </div>
         </div>
       ));
     }
     
-    if(Array.isArray(node)) {
+    if (Array.isArray(node)) {
       return node.map((item, index) => (
         <div key={index}>
-          {PrereqModules(item)}
+          {PrereqModules(item, node.length === 1)}
         </div>
-      ))
+      ));
     }
-  }
+  };
   
+  useEffect(() => {
+    if (showPrereq && clickPosition.x !== 0) {
+      setTimeout(() => {
+        const prereqBoxes = document.querySelectorAll('.prereq-group-or');
+        const connections = [];
+        
+        prereqBoxes.forEach((prereqBox, index) => {
+          const prereqRect = prereqBox.getBoundingClientRect();
+          const prereqBottomCenter = {
+            x: prereqRect.left + (prereqRect.width / 2),
+            y: prereqRect.bottom + window.scrollY 
+          };
+          
+          connections.push({
+            x1: clickPosition.x,
+            y1: clickPosition.y,
+            x2: prereqBottomCenter.x,
+            y2: prereqBottomCenter.y,
+            id: `line-${index}`
+          });
+        });
+        
+        if (connections.length === 0) {
+          const prereqTree = document.querySelector('.prereq-box-or');
+          if (prereqTree) {
+            const treeRect = prereqTree.getBoundingClientRect();
+            const treeBottomCenter = {
+              x: treeRect.left + (treeRect.width / 2),
+              y: treeRect.bottom + window.scrollY
+            };
+            
+            connections.push({
+              x1: clickPosition.x,
+              y1: clickPosition.y,
+              x2: treeBottomCenter.x,
+              y2: treeBottomCenter.y,
+              id: 'line-tree'
+            });
+          }
+        }
+        
+        setLineCoords(connections);
+      }, 100); 
+    } else {
+      setLineCoords(null);
+    }
+  }, [showPrereq, clickPosition]);
+
   return (
     <div className='academic-planner'>
       <div className="header">
@@ -89,13 +147,13 @@ const AcadPlan = () => {
           <div className="preview-controls">
             <button 
               className="move-sem"
-              onClick={() => setCurrentSemester(prev => prev === 1? 8 : prev-1)}
+              onClick={() => setCurrentSemester(prev => prev === 1 ? 8 : prev - 1)}
             >
               ← Prev Sem
             </button>
             <button 
               className="move-sem"
-              onClick={() => setCurrentSemester(prev => prev === 8? 1 : prev+1)}
+              onClick={() => setCurrentSemester(prev => prev === 8 ? 1 : prev + 1)}
             >
               Next Sem →
             </button>
@@ -115,21 +173,68 @@ const AcadPlan = () => {
                   className="selected"
                   onMouseEnter={(e) => handleModuleHover(e, mod)}
                   onMouseLeave={handleModuleLeave}
+                  onClick={(e) => handleModuleClick(e, mod)}
                 >
                   {mod.name}
                 </span>
               </div>
             ))}
-
-            {semester === `Sem ${currentSemester}` && (
-              <div className="prereq-tree">
-                {PrereqModules(prereq_tree['CS4222'])}
-              </div>
-            )}
           </div>
         ))}
       </div>
-      
+
+      {lineCoords && showPrereq && (
+        <svg
+          className="connection-line"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+          }}
+        >
+          <defs>
+            <marker
+              id="arrowhead"
+              markerWidth="8"
+              markerHeight="8"
+              refX="7"
+              refY="4"
+              orient="auto"
+            >
+              <polygon
+                points="0 0, 8 4, 0 8"
+                fill="#666"
+              />
+            </marker>
+          </defs>
+          {lineCoords.map((line, index) => {
+            const point1X = line.x1;
+            const point1Y = (line.y1 + line.y2)/2.1  ;
+            
+            const point2X = line.x2;
+            const point2Y = (line.y1 + line.y2)/2.1;
+            
+            return (
+              <g key={line.id || index}>
+                <path
+                  d={`M ${line.x1} ${line.y1} L ${point1X} ${point1Y} L ${point2X} ${point2Y} L ${line.x2} ${line.y2}`}
+                  stroke="#666"
+                  strokeWidth="1.5"
+                  fill="none"
+                  markerEnd="url(#arrowhead)"
+                  className="connection-path"
+                />
+                <circle cx={point1X} cy={point1Y} r="2" fill="#666" className="connection-dot" style={{ animationDelay: `${index * 0.1}s` }} />
+                <circle cx={point2X} cy={point2Y} r="2" fill="#666" className="connection-dot" style={{ animationDelay: `${index * 0.15}s` }} />
+              </g>
+            );
+          })}
+        </svg>
+      )}
+
       {showInfo && hoveredModule && (
         <div
           className="module-info"
@@ -141,6 +246,20 @@ const AcadPlan = () => {
           }}
         >
           {hoveredModule.info}
+        </div>
+      )}
+
+      {showPrereq && clickedModule && (
+        <div 
+          className="prereq-tree"
+          style={{
+            position: 'absolute',
+            left: `${clickPosition.x}px`,
+            top: `${clickPosition.y}px`,
+            transform: 'translateX(-55%) translateY(-200%)', 
+          }}
+        >
+          {PrereqModules(prereq_tree[clickedModule])}
         </div>
       )}
     </div>

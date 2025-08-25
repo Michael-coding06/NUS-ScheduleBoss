@@ -182,25 +182,21 @@
   position: relative;
 }
 
-.operator-label {
-  color: white;
-  font-size: 12px;
-  font-weight: 500;
-  margin-right: 15px;
-  padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  min-width: 40px;
-  text-align: center;
+.prereq-group-or {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
+  padding: 15px;
+  gap: 12px;
+  border: 1px solid gold;
+  border-radius: 15px;
+  max-width: 200px;
+  min-width: 130px;
 }
 
-.prereq-group {
+.prereq-group-and{
   display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-  padding-left: 15px;
-  border-left: 2px solid rgba(255, 179, 71, 0.3);
-  gap: 8px;
+  gap: 10px;
 }
 
 .module-option {
