@@ -13,11 +13,10 @@ const AcadPlan = () => {
   const [clickedModule, setClickedModule] = useState(null);
   const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
   const [lineCoords, setLineCoords] = useState(null);
-
+  const [showOr, setShowOr] = useState(true)
   const handleModuleHover = (e, module) => {
     setShowInfo(true);
     const rect = e.currentTarget.getBoundingClientRect();
-    console.log(module)
     setHoverPosition({
       x: rect.left + (rect.width / 2),
       y: rect.top + window.scrollY - 10
@@ -32,11 +31,16 @@ const AcadPlan = () => {
 
   const handleModuleSelect = (module) => {
     if (!selectedModules.includes(module)) {
-      console.log(prereq_tree[module.name]);
       setSelectedModules([...selectedModules, module]);
       academicModules[`Sem ${currentSemester}`].push(module);
     }
   };
+
+  const handleModuleOptionClick = (module, event) => {
+    const mod = {name: module, info: moduleDetails[module]}
+    academicModules[`Sem ${currentSemester}`].push(mod);
+    setShowOr(false)
+  }
 
   const handleModuleClick = (e, module) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -47,33 +51,35 @@ const AcadPlan = () => {
     setShowPrereq(!showPrereq);
     setClickedModule(module.name);
   };
-
-  const PrereqModules = (node) => {
+  const PrereqModules = (node, i) => {
+    console.log(i)
     if (typeof node === 'string') {
       return <span className= "module-option" key={node} 
         onMouseEnter={(e) => handleModuleHover(e, node)}
         onMouseLeave={handleModuleLeave}
+        onClick={(e) => handleModuleOptionClick(node)}
       >{node}</span>;
     }
     if (typeof node === 'object' && !Array.isArray(node)) {
-      return Object.entries(node).map(([operator, children], index) => (
-        <div className="operator-container" key={`${operator}-${index}`}>
+      return Object.entries(node).map(([operator, children], index) => {
+        const isHidden = !showOr && (i==2);
+        <div className="operator-container" key={`${operator}-${index}`} style ={{display: isHidden ? 'none' : 'block' }}>
           <div className={operator === 'and' ? 'prereq-group-and' : 'prereq-group-or'}>
-            {PrereqModules(children)}
+            {/* {PrereqModules(children, operator === 'or' ? i+1 : i)} */}
+            {PrereqModules(children, i +1)}
           </div>
         </div>
-      ));
+      });
     }
     
     if (Array.isArray(node)) {
       return node.map((item, index) => (
         <div key={index}>
-          {PrereqModules(item)}
+          {PrereqModules(item, i)}
         </div>
       ));
     }
   };
-  
   useEffect(() => {
     if (showPrereq && clickPosition.x !== 0) {
       setTimeout(() => {
@@ -174,7 +180,7 @@ const AcadPlan = () => {
             {academicModules[semester].map((mod, index) => (
               <div className="module-container" key={index}>
                 <span 
-                  className="selected"
+                  className="acad-selected"
                   onMouseEnter={(e) => handleModuleHover(e, mod)}
                   onMouseLeave={handleModuleLeave}
                   onClick={(e) => handleModuleClick(e, mod)}
@@ -263,7 +269,7 @@ const AcadPlan = () => {
             transform: 'translateX(-55%) translateY(-200%)', 
           }}
         >
-          {PrereqModules(prereq_tree[clickedModule])}
+          {PrereqModules(prereq_tree[clickedModule], 0)}
         </div>
       )}
     </div>
