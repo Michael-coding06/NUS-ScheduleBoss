@@ -37,6 +37,10 @@ body.loading {
 .header{
     color: #F8A531;
 }
+.header a {
+    color: white;
+    text-decoration: none;
+}
 
 table {
     border: 4px solid rgba(255, 255, 255, 0.05);
