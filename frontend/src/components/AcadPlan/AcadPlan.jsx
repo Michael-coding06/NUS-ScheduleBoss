@@ -36,10 +36,10 @@ const AcadPlan = () => {
     }
   };
 
-  const handleModuleOptionClick = (module, event) => {
+  const handleModuleOptionClick = (module) => {
     const mod = {name: module, info: moduleDetails[module]}
     academicModules[`Sem ${currentSemester}`].push(mod);
-    setShowOr(false)
+    // setShowOr(false)
   }
 
   const handleModuleClick = (e, module) => {
@@ -61,15 +61,15 @@ const AcadPlan = () => {
       >{node}</span>;
     }
     if (typeof node === 'object' && !Array.isArray(node)) {
-      return Object.entries(node).map(([operator, children], index) => {
-        const isHidden = !showOr && (i==2);
-        <div className="operator-container" key={`${operator}-${index}`} style ={{display: isHidden ? 'none' : 'block' }}>
+      return Object.entries(node).map(([operator, children], index) => (
+        // const isHidden = showOr && (i==2);
+        <div className="operator-container" key={`${operator}-${index}`}>
           <div className={operator === 'and' ? 'prereq-group-and' : 'prereq-group-or'}>
             {/* {PrereqModules(children, operator === 'or' ? i+1 : i)} */}
             {PrereqModules(children, i +1)}
           </div>
         </div>
-      });
+      ));
     }
     
     if (Array.isArray(node)) {
