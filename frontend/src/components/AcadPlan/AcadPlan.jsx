@@ -1,7 +1,7 @@
 import './AcadPlan.css';
 import React, { useEffect, useState } from 'react';
 import { core_modules, recommended_modules, prereq_tree } from './data';
-import {moduleDetails} from '../Timetable/data/data'
+import {moduleDetails} from '../TimeTable/data/data'
 const AcadPlan = () => {
   const [showInfo, setShowInfo] = useState(false);
   const [hoveredModule, setHoveredModule] = useState(null);
