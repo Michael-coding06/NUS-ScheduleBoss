@@ -31,7 +31,6 @@ body.loading {
 }
 .timetable{
     padding-top: 10px;
-    padding-left: 30px;
     font-family: sans-serif;
 }
 .header{
@@ -765,8 +764,190 @@ tr:nth-child(even) {
 .submit:hover, .submit-2:hover{
     color:#f37335;
 }
+@media (max-width: 1024px){
+   .header {
+    font-size: 24px;
+  }
 
-@media (max-width: 500px) {
+  .submit, .submit-2 {
+    font-size: 16px;
+    width: 100px;
+    height: 45px;
+    margin-right: 20px;
+  }
+
+  table {
+    font-size: 13px;
+    table-layout: fixed;
+    width: 100%;
+  }
+  .timetable{
+    padding-left: 10px;
+    padding-right: 30px;
+  }
+  thead th, tbody td {
+    padding: 12px 8px;
+    width: calc((100% - 80px) / 6); 
+  }
+
+  thead th:first-child,
+  tbody td:first-child {
+    width: 35px; /* Fixed width for time column */
+    padding: 12px 5px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .span-name {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+
+  .content-wrapper {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap; 
+  }
+
+  .right-group {
+    width: 30%; 
+  }
+
+  .calendar, .add-mod {
+    width: 100%;
+  }
+  .task-section-header{
+    font-size: 14px;
+  }
+
+  .calendar-wrapper {
+    flex-direction: column;
+
+  }
+  .game-3d-layout{
+    display: none;
+  }
+
+  .calendar-check {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .calendar-item {
+    min-width: auto;
+  }
+  /* Module and task sections */
+  .mod-search {
+    width: 80%;
+    font-size: 14px;
+    height: 20px;
+  }
+
+  .dropdown-mod {
+    width: 97%;
+    max-height: 180px;
+  }
+
+  .dropdown-mod-module {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  .mod-card, .task-card {
+    margin-top: 15px;
+  }
+
+  .color-box, .color-box-task {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mod-info, .task-info-2 {
+    margin-left: 15px;
+  }
+
+  .mod-title, .task-title {
+    font-size: 14px;
+  }
+
+  .mod-sub, .task-subtitle {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  .mod-action {
+    margin-right: 15px;
+  }
+
+  .icon {
+    padding: 6px;
+    margin-left: 6px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .dropdown-menu{
+    width: 90px;
+    transform: translateX(-50%);
+  }
+  
+  .dropdown-menu-task {
+    width: 180px;
+  }
+  .dropdown-menu{
+    margin-right: 20px;
+  }
+
+  .dropdown-item {
+    font-size: 13px;
+    width: 73%;
+  }
+
+  .dropdown-input {
+    width: 60%;
+    font-size: 13px;
+  }
+  .header{
+    font-size: 20px;
+  }
+
+  .task-info-item {
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .task-label {
+    width: 50%;
+  }
+
+  .task-input {
+    width: 45%;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .task-info button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .span-details {
+    font-size: 11px;
+    padding: 10px 15px;
+  }
+
+  .span-details-header {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .span-details-time {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+}
+@media (max-width: 600px) {
   body, html{
     width: 100%;
     overflow-x: hidden;
@@ -867,3 +1048,4 @@ tr:nth-child(even) {
     padding: 5px;
  }
 }
+
