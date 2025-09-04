@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* background-color: #F1F9F3; */
   background-image: url('./background-img.png');
+  /* background-color: #37123d; */
   overflow-y:auto;
   overflow-x:auto;
 }

@@ -62,10 +62,8 @@ const AcadPlan = () => {
     }
     if (typeof node === 'object' && !Array.isArray(node)) {
       return Object.entries(node).map(([operator, children], index) => (
-        // const isHidden = showOr && (i==2);
         <div className="operator-container" key={`${operator}-${index}`}>
           <div className={operator === 'and' ? 'prereq-group-and' : 'prereq-group-or'}>
-            {/* {PrereqModules(children, operator === 'or' ? i+1 : i)} */}
             {PrereqModules(children, i +1)}
           </div>
         </div>
